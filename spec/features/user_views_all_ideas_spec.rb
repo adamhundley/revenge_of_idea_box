@@ -8,9 +8,7 @@ RSpec.feature "UserViewsAllIdeas", type: :feature, js: true do
   end
 
   scenario "User visits their artist dashboard and adds a new artist then untracks one then views a tour" do
-    # VCR.use_cassette("feature#user_adds_idea") do
-
-
+    VCR.use_cassette("feature#user_adds_idea") do
       visit "/"
 
       expect(page).to have_content "Test Idea Title"
@@ -19,5 +17,5 @@ RSpec.feature "UserViewsAllIdeas", type: :feature, js: true do
 
       expect(Idea.count).to eq 1
     end
-  # end
+  end
 end

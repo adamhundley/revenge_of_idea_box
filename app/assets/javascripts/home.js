@@ -19,19 +19,29 @@ $(document).ready(function(){
   }
 
   function addIdeaToTable(idea) {
-    html = '<tr><td>' + idea.title + '</td><td>' + idea.body + '</td><td>' + idea.quality + '</td></tr>'
+    html = '<tr id=idea'+ idea.id +'><td>' + idea.title + '</td><td>' + idea.body + '</td><td>' + idea.quality + '</td><td><a href="#" class="delete-idea" id=delete data-id='+ idea.id + '>Delete</a></td></tr>'
     $('.ideas-table').prepend(html)
   }
 
   $('.addIdeaForm').on('submit', function() {
     event.preventDefault();
 
-    var idea = $.post( "/api/v1/ideas", { title: $('#title').val(), body: $('#body').val()}, function(data) {
-      addIdeaToTable(data)
+    var idea = $.post( "/api/v1/ideas", { title: $('#title').val(), body: $('#body').val()}).then(function(ideas) {
+      addIdeaToTable(ideas)
   });
 
 
   $('.addIdeaForm').trigger('reset')
 
   });
+
+  $(document).on('click', '.delete-idea', function(){
+    var ideaId = $(this).attr('data-id')
+    $.ajax({
+      url: '/api/v1/ideas/'+ideaId+'',
+      type: 'DELETE',
+      dataType: "json",
+    });
+    $('.ideas-table #idea'+ ideaId +'').hide()
+  })
 });
