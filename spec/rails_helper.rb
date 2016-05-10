@@ -70,3 +70,9 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+VCR.configure do |config|
+  config.allow_http_connections_when_no_cassette = true
+  config.cassette_library_dir = "spec/cassettes"
+  config.hook_into :webmock
+end
