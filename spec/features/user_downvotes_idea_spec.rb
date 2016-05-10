@@ -8,18 +8,15 @@ RSpec.feature "UserDownvotesAnIdea", type: :feature, js: true do
   end
 
   scenario "User visits the home page, downvotes an idea and sees change on page" do
-    VCR.use_cassette("feature#user_upvotes_idea") do
+    visit "/"
+    expect(page).to have_content "genius"
 
-      visit "/"
-      expect(page).to have_content "genius"
+    within("tr#idea#{@idea.id}") do
+      click_on "downvote"
 
-      within("tr#idea#{@idea.id}") do
-        click_on "downvote"
+      wait_for_ajax
 
-        wait_for_ajax
-
-        expect(page).to have_content "plausible"
-      end
+      expect(page).to have_content "plausible"
     end
   end
 end
