@@ -8,12 +8,18 @@ module Api
       end
 
       def create
-        @idea = Idea.create(title: params[:title], body: params[:body])
-        respond_with :api, :v1, @idea, location: nil
+        idea = Idea.create(title: params[:title], body: params[:body])
+        respond_with :api, :v1, idea, location: nil
       end
 
       def destroy
         respond_with Idea.delete(params[:id])
+      end
+
+      def update
+        idea = Idea.find(params[:id])
+        updater(idea)
+        respond_with :api, :v1, idea, location: nil
       end
 
       def upvote
@@ -43,6 +49,14 @@ module Api
             idea.update(quality: "swill")
           elsif idea.quality == "genius"
             idea.update(quality: "plausible")
+          end
+        end
+
+        def updater(idea)
+          if params[:title]
+            idea.update(title: params[:title])
+          elsif params[:body]
+            idea.update(body: params[:body])
           end
         end
     end

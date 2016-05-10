@@ -64,15 +64,16 @@ Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 
+VCR.configure do |config|
+  config.allow_http_connections_when_no_cassette = true
+  config.cassette_library_dir = "spec/cassettes"
+  config.hook_into :webmock
+  config.ignore_localhost = true
+end
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
     with.library :rails
   end
-end
-
-VCR.configure do |config|
-  config.allow_http_connections_when_no_cassette = true
-  config.cassette_library_dir = "spec/cassettes"
-  config.hook_into :webmock
 end
