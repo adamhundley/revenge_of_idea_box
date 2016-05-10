@@ -10,6 +10,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'codeclimate-test-reporter', group: :test, require: nil
+gem 'responders'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'byebug'
@@ -19,6 +21,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'chromedriver-helper'
 end
 
 group :development do
@@ -29,4 +32,5 @@ end
 
 group :test do
   gem 'simplecov', require: false
+  gem 'vcr'
 end
