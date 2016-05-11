@@ -71,6 +71,6 @@ $(document).ready(function(){
   $(".ideas-table").on("click", "td", function(){
       $(this).children('.ideaBody').show()
       $(this).children('.ideaPara').hide()
-      $(this).children().focus();
+      $(this).children('input').focus();
   });
 });
