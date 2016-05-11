@@ -11,7 +11,7 @@ RSpec.feature "UserCreatesAnIdea", type: :feature, js: true do
     expect(page).to have_content "Welcome to your Idea Box!"
 
     find('.lightbulb').click
-    
+
     within('div#addIdea') do
       fill_in "title", with: "New Idea Title"
       fill_in "body", with: "New Idea Body"
@@ -19,6 +19,7 @@ RSpec.feature "UserCreatesAnIdea", type: :feature, js: true do
     end
 
     wait_for_ajax
+
     within('div.ideas') do
       expect(find_field('title').value).to eq "New Idea Title"
       expect(find_field('body').value).to eq "New Idea Body"
@@ -26,6 +27,5 @@ RSpec.feature "UserCreatesAnIdea", type: :feature, js: true do
     end
 
     expect(current_path).to eq "/"
-
   end
 end
