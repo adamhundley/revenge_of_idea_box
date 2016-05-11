@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RevengeOfIdeaBox</title>
+  <%= favicon_link_tag 'logo.png' %>
+  <title>Idea Lightbulb</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -12,7 +13,7 @@
     font-family: 'Open Sans', serif;
    }
   </style>
-    
+
 <body>
 
 <%= yield %>
