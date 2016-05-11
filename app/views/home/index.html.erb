@@ -1,8 +1,22 @@
-<div class="container">
+<div class="container text-center">
   <h1>Welcome to your Idea Box!</h1>
-
+  <hr>
+  <div class="searchIdea" id="searchIdea">
+    <form class="form-inline searchIdeaForm">
+      <div class="form-group">
+        <input type="text_field" id="search" placeholder="Search" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-info btn-md"  value="clear" id="clear">Clear</button>
+      </div>
+    </form>
+  </div>
+  <hr>
+  <div class="lightbulbContainer">
+    <img src="https://writtenbutnevershared.files.wordpress.com/2013/11/idea-lightbulb-sketch.jpg" class="lightbulb" alt="" />
+  </div>
   <div class="addIdea" id="addIdea">
-    Add Idea here: <form class="form-inline addIdeaForm">
+    <form class="form-inline addIdeaForm">
       <div class="form-group">
         <input type="text_field" id="title" placeholder="Idea Title" class="form-control" required>
       </div>
@@ -15,14 +29,14 @@
     </form>
   </div><br>
   <div class="ideas">
-    <table class="table ideas-table">
+    <table class="table text-center table-responsive ideas-table">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Body</th>
-          <th>Quality</th>
-          <th>Delete</th>
-          <th>Vote</th>
+          <th class="text-center">Title</th>
+          <th class="text-center">Body</th>
+          <th class="text-center">Quality</th>
+          <th class="text-center">Vote</th>
+          <th class="text-center">Delete</th>
         </tr>
       </thead>
     </table>

@@ -4,6 +4,13 @@
 $(document).ready(function(){
   getTheIdeas();
 
+  $('.addIdea').hide();
+
+  $('.lightbulbContainer').on('click', 'img', function() {
+    $(this).hide();
+    $('.addIdea').show();
+  });
+
   function getTheIdeas(){
     return $.getJSON("/api/v1/ideas").then(function(ideas){
       addIdeasToPage(ideas);
@@ -19,15 +26,17 @@ $(document).ready(function(){
   }
 
   function addIdeaToTable(idea) {
-    html = '<tr id=idea'+ idea.id +'>';
-    html += '<div class="form-group"><td><input type="text" name="title" value=\''+ idea.title +'\' class="toedit" id="title" readonly="readonly" data-id='+ idea.id + '/></td></div><td>';
-    html += '<input type="text" name="body" value=\''+ idea.body +'\' class="toedit" readonly="readonly" id="body" size="100" data-id='+ idea.id + '/></td><td class="quality">' + idea.quality + '</td>';
-    html += '<td><a href="#" class="delete-idea" id=delete data-id='+ idea.id + '>Delete</a></td>';
-    html += '<td><a href="" class="downvote" id="downvote" data-id='+ idea.id +'>'
+    var body = idea.body.substring(0, 100)
+
+    html = '<tr class="idea" id=idea'+ idea.id +'>';
+    html += '<div class="form-group"><td class="title"><input type="text" name="title" value=\''+ idea.title +'\' class="toedit" id="title" readonly="readonly" data-id='+ idea.id + '/></td></div><td class="body">';
+    html += '<input type="text" name="body" value=\''+ body +'\' class="toedit" readonly="readonly" id="body" data-id='+ idea.id + '/></td><td class="quality">' + idea.quality + '</td>';
+    html += '<td><a href="" class="downvote" id="downvote" data-id='+ idea.id +'>';
     html += '<img src="http://icons.iconarchive.com/icons/custom-icon-design/mono-business-2/512/thumbs-down-icon.png" class="vote">'
-    html += '<a href="" class="upvote" id="upvote" data-id='+ idea.id +'>'
-    html += '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png" class="vote"></td>'
-    html += '</tr>'
+    html += '<a href="" class="upvote" id="upvote" data-id='+ idea.id +'>';
+    html += '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png" class="vote"></td>';
+    html += '<td><a href="#" class="delete-idea" id=delete data-id='+ idea.id + '><img src="http://www.meetchaos.com/resources/images/trash.png" class="trash"></a></td>';
+    html += '</tr>';
     $('.ideas-table').prepend(html)
   }
 
@@ -37,8 +46,8 @@ $(document).ready(function(){
     var idea = $.post( "/api/v1/ideas", { title: $('#title').val(), body: $('#body').val()}).then(function(ideas) {
       addIdeaToTable(ideas)
   });
-
-
+  $('.addIdea').hide();
+  $('.lightbulbContainer img').show();
   $('.addIdeaForm').trigger('reset')
 
   });
