@@ -9,8 +9,9 @@ RSpec.feature "UserCreatesAnIdea", type: :feature, js: true do
 
     expect(current_path).to eq "/"
     expect(page).to have_content "Welcome to your Idea Box!"
-    expect(page).to have_content "Add Idea here:"
 
+    find('.lightbulb').click
+    
     within('div#addIdea') do
       fill_in "title", with: "New Idea Title"
       fill_in "body", with: "New Idea Body"
