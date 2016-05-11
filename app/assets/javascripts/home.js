@@ -25,12 +25,21 @@ $(document).ready(function(){
     addIdeaToTable(idea);
   }
 
+  function truncateBody(body) {
+    var bodyLength = body.lastIndexOf(' ', 100);
+    return body.substring(0, bodyLength)+'...'
+  }
+
   function addIdeaToTable(idea) {
-    var body = idea.body.substring(0, 100)
+    if(idea.body.length > 100) {
+      var ideaBody = truncateBody(idea.body)
+    } else {
+      var ideaBody = idea.body
+    }
 
     html = '<tr class="idea" id=idea'+ idea.id +'>';
-    html += '<div class="form-group"><td class="title edit"><input type="text" name="title" value=\''+ idea.title +'\' class="toedit" id="title" readonly="readonly" data-id='+ idea.id + '></td></div><td class="edit body">';
-    html += '<input type="text" name="body" value=\''+ body +'\' class="toedit" readonly="readonly" id="body" data-id='+ idea.id + '></td><td class="quality">' + idea.quality + '</td>';
+    html += '<td class="title edit"><input type="text" name="title" value=\''+ idea.title +'\' class="toedit" id="title" readonly="readonly" data-id='+ idea.id + '></td><td class="edit body">';
+    html += '<p class="ideaPara">'+ ideaBody +'</p><textarea type="text" name="body" rows="3" wrap="hard" cols="70" class="ideaBody toedit" id="body" data-id='+ idea.id + '>'+ idea.body +'</textarea></td><td class="quality">' + idea.quality + '</td>';
     html += '<td><a href="" class="downvote" id="downvote" data-id='+ idea.id +'>';
     html += '<img src="http://icons.iconarchive.com/icons/custom-icon-design/mono-business-2/512/thumbs-down-icon.png" class="vote">'
     html += '<a href="" class="upvote" id="upvote" data-id='+ idea.id +'>';
@@ -49,8 +58,5 @@ $(document).ready(function(){
   $('.addIdea').hide();
   $('.lightbulbContainer img').show();
   $('.addIdeaForm').trigger('reset')
-
   });
-
-
 });

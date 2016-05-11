@@ -17,7 +17,7 @@ RSpec.feature "UserUpvotesAnIdea", type: :feature, js: true do
 
     within("div.ideas") do
       expect(find_field('title').value).to have_content "Stupid Title"
-      expect(find_field('body').value).to have_content "Stupid Body"
+      expect(page).to have_content "Stupid Body"
       expect(page).to_not have_content "Test Idea Title"
       expect(page).to_not have_content "Test Idea Body"
     end
