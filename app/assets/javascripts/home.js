@@ -42,9 +42,9 @@ $(document).ready(function(){
     html += '<p class="ideaPara">'+ ideaBody +'</p><textarea type="text" name="body" rows="3" wrap="hard" cols="70" class="ideaBody toedit" id="body" data-id='+ idea.id + '>'+ idea.body +'</textarea></td><td class="quality">' + idea.quality + '</td>';
     html += '<td><a href="" class="downvote" id="downvote" data-id='+ idea.id +'>';
     html += '<img src="http://icons.iconarchive.com/icons/custom-icon-design/mono-business-2/512/thumbs-down-icon.png" class="vote">'
-    html += '<a href="" class="upvote" id="upvote" data-id='+ idea.id +'>';
-    html += '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png" class="vote"></td>';
-    html += '<td><a href="#" class="delete-idea" id=delete data-id='+ idea.id + '><img src="http://www.meetchaos.com/resources/images/trash.png" class="trash"></a></td>';
+    html += '<a class="upvote" id="upvote" data-id='+ idea.id +'>';
+    html += '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png" class="vote"></a></td>';
+    html += '<td><a class="delete-idea" id=delete data-id='+ idea.id + '><img src="http://www.meetchaos.com/resources/images/trash.png" class="trash"></a></td>';
     html += '</tr>';
     $('.ideas-table').prepend(html)
   }
