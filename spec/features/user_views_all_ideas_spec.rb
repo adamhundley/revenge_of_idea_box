@@ -12,7 +12,7 @@ RSpec.feature "UserViewsAllIdeas", type: :feature, js: true do
 
     within("tr#idea#{@idea.id}") do
       expect(find_field('title').value).to eq "Test Idea Title"
-      expect(find_field('body').value).to eq "Test Idea Body"
+      expect(page).to have_content "Test Idea Body"
       expect(page).to have_content "swill"
     end
 

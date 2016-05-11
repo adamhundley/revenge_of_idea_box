@@ -22,7 +22,7 @@ RSpec.feature "UserCreatesAnIdea", type: :feature, js: true do
 
     within('div.ideas') do
       expect(find_field('title').value).to eq "New Idea Title"
-      expect(find_field('body').value).to eq "New Idea Body"
+      expect(page).to have_content "New Idea Body"
       expect(page).to have_content "swill"
     end
 

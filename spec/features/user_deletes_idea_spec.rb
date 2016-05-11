@@ -11,7 +11,7 @@ RSpec.feature "UserDeletesAnIdea", type: :feature, js: true do
     visit "/"
     within("tr#idea#{@idea.id}") do
       expect(find_field('title').value).to eq "Test Idea Title"
-      expect(find_field('body').value).to eq "Test Idea Body"
+      expect(page).to have_content "Test Idea Body"
       expect(page).to have_content "swill"
       click_on "delete"
     end

@@ -13,7 +13,7 @@ RSpec.feature "UserUpvotesAnIdea", type: :feature, js: true do
     within("tr#idea#{@idea.id}") do
       find("#title").click
       fill_in "title", with: "New Title"
-      find("#body").click
+      find(".ideaPara").click
       fill_in "body", with: "New Body"
       #below simply clicks to insure body is saved
       find("#title").click
@@ -23,7 +23,7 @@ RSpec.feature "UserUpvotesAnIdea", type: :feature, js: true do
 
     within("tr#idea#{@idea.id}") do
       expect(find_field('title').value).to eq "New Title"
-      expect(find_field('body').value).to eq "New Body"
+      expect(page).to have_content "New Body"
     end
   end
 end
