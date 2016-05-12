@@ -1,11 +1,23 @@
  // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+function truncateBody(body) {
+  var bodyLength = body.lastIndexOf(' ', 100);
+  return body.substring(0, bodyLength)+'...'
+}
+
+function checkIdeaBodyLength(body){
+  if(body.length > 100) {
+    return truncateBody(body)
+  } else {
+    return body
+  }
+}
+
 $(document).ready(function(){
   getTheIdeas();
 
   $('.addIdea').hide();
-
 
   $('.lightbulbContainer').on('click', 'img', function() {
     $(this).hide();
@@ -27,11 +39,8 @@ $(document).ready(function(){
   }
 
   function addIdeaToTable(idea) {
-    if(idea.body.length > 100) {
-      var ideaBody = truncateBody(idea.body)
-    } else {
-      var ideaBody = idea.body
-    }
+
+    var ideaBody = checkIdeaBodyLength(idea.body)
 
     html = '<tr class="idea" id=idea'+ idea.id +'>';
     html += '<td class="title edit"><input type="text" name="title" value=\''+ idea.title +'\' class="toedit" id="title" readonly="readonly" data-id='+ idea.id + '></td><td class="edit body">';
