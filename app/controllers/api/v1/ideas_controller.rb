@@ -18,47 +18,21 @@ module Api
 
       def update
         idea = Idea.find(params[:id])
-        updater(idea)
+        IdeaEditor.updater(idea, params)
         respond_with :api, :v1, idea, location: nil
       end
 
       def upvote
         idea = Idea.find(params[:id])
-        upvoter(idea)
+        IdeaEditor.upvoter(idea)
         respond_with :api, :v1, idea, location: nil
       end
 
       def downvote
         idea = Idea.find(params[:id])
-        downvoter(idea)
+        IdeaEditor.downvoter(idea)
         respond_with :api, :v1, idea, location: nil
       end
-
-      private
-
-        def upvoter(idea)
-          if idea.quality == "swill"
-            idea.update(quality: "plausible")
-          elsif idea.quality == "plausible"
-            idea.update(quality: "genius")
-          end
-        end
-
-        def downvoter(idea)
-          if idea.quality == "plausible"
-            idea.update(quality: "swill")
-          elsif idea.quality == "genius"
-            idea.update(quality: "plausible")
-          end
-        end
-
-        def updater(idea)
-          if params[:title]
-            idea.update(title: params[:title])
-          elsif params[:body]
-            idea.update(body: params[:body])
-          end
-        end
     end
   end
 end
