@@ -13,7 +13,7 @@ RSpec.feature "UserDeletesAnIdea", type: :feature, js: true do
       expect(find_field('title').value).to eq "Test Idea Title"
       expect(page).to have_content "Test Idea Body"
       expect(page).to have_content "swill"
-      click_on "delete"
+      find('.trash').click
     end
 
     wait_for_ajax

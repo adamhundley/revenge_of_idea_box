@@ -13,6 +13,12 @@ $(document).on('click', '.upvote', function(){
   var ideaId = $(this).attr('data-id')
   $.post('/api/v1/ideas/upvote', {id: ideaId} ).then(function(idea){
     $('.ideas-table #idea'+ ideaId +' .quality').empty().append(idea.quality)
+
+  $('.ideas-table #idea'+ ideaId +' .downvoteImage').removeClass('dimVote')
+
+    if(idea.quality == 'genius'){
+      $('.ideas-table #idea'+ ideaId +' .upvoteImage').addClass('dimVote')
+    }
   });
 });
 
@@ -21,5 +27,11 @@ $(document).on('click', '.downvote', function(){
   var ideaId = $(this).attr('data-id')
   $.post('/api/v1/ideas/downvote', {id: ideaId} ).then(function(idea){
     $('.ideas-table #idea'+ ideaId +' .quality').empty().append(idea.quality)
+
+      $('.ideas-table #idea'+ ideaId +' .upvoteImage').removeClass('dimVote')
+
+    if(idea.quality == 'swill'){
+      $('.ideas-table #idea'+ ideaId +' .downvoteImage').addClass('dimVote')
+    }
   });
 });
