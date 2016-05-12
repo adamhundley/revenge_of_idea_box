@@ -14,7 +14,7 @@ $(document).ready(function(){
   });
 
   $('.ideas-table').on('keydown', "input, select", function (e){
-    if(e.keyCode == 13){
+    if(e.keyCode === 13){
       textInputChanges($(this));
     }
   });
@@ -44,7 +44,7 @@ $(document).ready(function(){
   };
 
   $('.ideas-table').on('keydown', "textarea", function (e){
-    if(e.keyCode == 13){
+    if(e.keyCode === 13){
       $(this).hide();
       var ideaBody = checkIdeaBodyLength($(this).val());
       textAreaChanges($(this), ideaBody);

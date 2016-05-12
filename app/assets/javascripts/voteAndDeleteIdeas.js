@@ -16,7 +16,7 @@ $(document).on('click', '.upvote', function(){
 
   $('.ideas-table #idea'+ ideaId +' .downvoteImage').removeClass('dimVote');
 
-    if(idea.quality == 'genius'){
+    if(idea.quality === 'genius'){
       $('.ideas-table #idea'+ ideaId +' .upvoteImage').addClass('dimVote');
     }
   });
@@ -30,7 +30,7 @@ $(document).on('click', '.downvote', function(){
 
       $('.ideas-table #idea'+ ideaId +' .upvoteImage').removeClass('dimVote');
 
-    if(idea.quality == 'swill'){
+    if(idea.quality === 'swill'){
       $('.ideas-table #idea'+ ideaId +' .downvoteImage').addClass('dimVote');
     }
   });

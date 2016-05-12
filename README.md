@@ -10,6 +10,8 @@ This is a Rails, single-page application. It uses JavaScript and jQuery to set u
 
 ### Screenshot
 
+![Idea Lightbulb](app/assets/images/idea-lightbulb.png)
+
 ### Test Suite
 
 The test suite can be run locally using Rspec and the `rspec` command. JavaScript functions tests can be run using Teaspoon and the `bundle exec rake teaspoon` command.
