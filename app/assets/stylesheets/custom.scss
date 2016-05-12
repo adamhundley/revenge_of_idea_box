@@ -10,8 +10,9 @@ td input {
 }
 
 .lightbulb {
-  width: 200px;
+  width: 250px;
   height: auto;
+  margin-top: -50px;
 }
 
 #addIdea {
@@ -19,8 +20,8 @@ td input {
 }
 
 .addIdeaForm {
-  margin-top: 80px;
-  margin-bottom: -80px;
+  margin-top: 10px;
+  // margin-bottom: -80px;
 }
 
 hr {
@@ -39,4 +40,20 @@ hr {
 
 .dimVote {
   opacity: .35;
+}
+
+@media (max-width: 1200px) {
+  .lightbulb {
+    width: 200px;
+  }
+}
+@media (max-width: 995px) {
+  .lightbulb {
+    width: 100px;
+  }
+}
+@media (max-width: 766px) {
+  .lightbulb {
+    display: none;
+  }
 }

@@ -17,12 +17,12 @@ function checkIdeaBodyLength(body){
 $(document).ready(function(){
   getTheIdeas();
 
-  $('.addIdea').hide();
-
-  $('.lightbulbContainer').on('click', 'img', function() {
-    $(this).hide();
-    $('.addIdea').show();
-  });
+  // $('.addIdea').hide();
+  //
+  // $('.lightbulbContainer').on('click', 'img', function() {
+  //   $(this).hide();
+  //   $('.addIdea').show();
+  // });
 
   function getTheIdeas(){
     return $.getJSON("/api/v1/ideas").then(function(ideas){
