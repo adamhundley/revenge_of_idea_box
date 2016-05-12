@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
   $(".ideas-table").on("click", "td", function(){
-    $(this).children('.ideaBody').show()
-    $(this).children('.ideaPara').hide()
+    $(this).children('.ideaBody').show();
+    $(this).children('.ideaPara').hide();
     $(this).children('input').focus();
     $(this).children('textarea').focus();
   });
@@ -15,19 +15,19 @@ $(document).ready(function(){
 
   $('.ideas-table').on('keydown', "input, select", function (e){
     if(e.keyCode == 13){
-      textInputChanges($(this))
+      textInputChanges($(this));
     }
-  })
+  });
 
   $(".ideas-table").on("blur", "input, select", function(){
-    textInputChanges($(this))
+    textInputChanges($(this));
   });
 
   var textInputChanges = function(input){
-    input.prop("readonly", true)
-    input.addClass("toedit")
-    editIdea(input)
-  }
+    input.prop("readonly", true);
+    input.addClass("toedit");
+    editIdea(input);
+  };
 
   var editIdea = function(input){
     var ideaId = input.attr('data-id');
@@ -40,27 +40,26 @@ $(document).ready(function(){
         type: 'PATCH',
         dataType: 'json',
         data: attribute + '=' + newText
-      })
-  }
+      });
+  };
 
   $('.ideas-table').on('keydown', "textarea", function (e){
     if(e.keyCode == 13){
-      $(this).hide()
-      var ideaBody = checkIdeaBodyLength($(this).val())
-      textAreaChanges($(this), ideaBody)
+      $(this).hide();
+      var ideaBody = checkIdeaBodyLength($(this).val());
+      textAreaChanges($(this), ideaBody);
     }
-  })
+  });
 
   $(".ideas-table").on("blur", "textarea", function(){
-    $(this).hide()
-    var ideaBody = checkIdeaBodyLength($(this).val())
+    $(this).hide();
+    var ideaBody = checkIdeaBodyLength($(this).val());
 
-    textAreaChanges($(this), ideaBody)
+    textAreaChanges($(this), ideaBody);
   });
   var textAreaChanges = function(area, ideaBody){
-    area.siblings('.ideaPara').empty().append(ideaBody)
-    area.siblings('.ideaPara').show()
-    editIdea(area)
+    area.siblings('.ideaPara').empty().append(ideaBody);
+    area.siblings('.ideaPara').show();
+    editIdea(area);
   };
-
 });
