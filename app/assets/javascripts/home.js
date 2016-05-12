@@ -59,8 +59,6 @@ $(document).ready(function(){
     var idea = $.post( "/api/v1/ideas", { title: $('#title').val(), body: $('#body').val()}).then(function(ideas) {
       addIdeaToTable(ideas);
   });
-  $('.addIdea').hide();
-  $('.lightbulbContainer img').show();
   $('.addIdeaForm').trigger('reset');
   });
 });
