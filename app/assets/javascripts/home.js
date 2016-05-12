@@ -46,9 +46,9 @@ $(document).ready(function(){
     html += '</tr>';
     $('.ideas-table').prepend(html);
 
-    if (idea.quality == "swill") {
+    if (idea.quality === "swill") {
       $('#downvote'+ idea.id +'').addClass('dimVote');
-    } else if (idea.quality == "genius") {
+    } else if (idea.quality === "genius") {
       $('#upvote'+ idea.id +'').addClass('dimVote');
     }
   }
