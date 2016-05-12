@@ -1,6 +1,8 @@
 .vote {
   width: 30px;
   height: auto;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 td input {
@@ -34,4 +36,7 @@ hr {
 .ideaBody {
   display: none;
 }
-a:link, a:visited, a:hover, a:focus, a:active {text-decoration: none}
+
+.dimVote {
+  opacity: .35;
+}

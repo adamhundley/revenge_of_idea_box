@@ -11,6 +11,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'responders'
+gem 'coffee-rails'
+gem 'sprockets-rails', '2.3.3'
 
 group :development, :test do
   gem 'pry-rails'
@@ -22,6 +24,8 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'chromedriver-helper'
+  gem 'teaspoon'
+  gem 'teaspoon-mocha'
 end
 
 group :development do

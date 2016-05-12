@@ -1,5 +1,9 @@
-$(document).ready(function(){
+function truncateBody(body) {
+  var bodyLength = body.lastIndexOf(' ', 100);
+  return body.substring(0, bodyLength)+'...'
+}
 
+$(document).ready(function(){
   $(".ideas-table").on("focus", "input, select", function(){
     $(this)
     .prop("readonly", false)
@@ -30,11 +34,6 @@ $(document).ready(function(){
       editIdea($(this))
     }
   })
-
-  function truncateBody(body) {
-    var bodyLength = body.lastIndexOf(' ', 100);
-    return body.substring(0, bodyLength)+'...'
-  }
 
   var editIdea = function(input){
     var ideaId = input.attr('data-id');

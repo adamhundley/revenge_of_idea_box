@@ -12,7 +12,7 @@ RSpec.feature "UserUpvotesAnIdea", type: :feature, js: true do
     expect(page).to have_content "swill"
 
     within("tr#idea#{@idea.id}") do
-      click_on "upvote"
+      find('.upvote').click
 
       wait_for_ajax
 
