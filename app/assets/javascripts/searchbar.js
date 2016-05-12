@@ -1,23 +1,23 @@
 $(document).ready(function(){
   $('#clear').on('click', function(){
-    $('#searchIdeaForm').trigger('reset')
-  })
+    $('#searchIdeaForm').trigger('reset');
+  });
 
   $('#search').on('keyup', function() {
     searchIdeas($(this).val());
   });
 
   var searchIdeas = function(searchString){
-    var ideas = $('.idea')
+    var ideas = $('.idea');
 
     $.each(ideas, function(idea) {
-      title = $(this).children('.title').children('#title').val()
-      body = $(this).children('.body').children('#body').val()
+      title = $(this).children('.title').children('#title').val();
+      body = $(this).children('.body').children('#body').val();
 
       var matchingIdeas = findMatches(title, body, searchString);
         $(this).toggle(matchingIdeas);
     });
-  }
+  };
 
   var findMatches = function(title, body, searchString) {
     return contains(title, searchString) || contains(body, searchString);
