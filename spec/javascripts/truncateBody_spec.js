@@ -1,4 +1,4 @@
-//= require editIdeas
+//= require home
 
 describe('truncateBody', function () {
   it('truncates strings over 100 characters to the nearest word', function () {
