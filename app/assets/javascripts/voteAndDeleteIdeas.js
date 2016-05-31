@@ -1,5 +1,11 @@
+function getIdeaId(scope) {
+  return $(scope).attr('data-id')
+}
+
 $(document).on('click', '.delete-idea', function(){
-  var ideaId = $(this).attr('data-id');
+  event.preventDefault();
+  var ideaId = getIdeaId(this);
+
   $.ajax({
     url: '/api/v1/ideas/'+ideaId+'',
     type: 'DELETE',
@@ -10,7 +16,8 @@ $(document).on('click', '.delete-idea', function(){
 
 $(document).on('click', '.upvote', function(){
   event.preventDefault();
-  var ideaId = $(this).attr('data-id');
+  var ideaId = getIdeaId(this);
+  
   $.post('/api/v1/ideas/upvote', {id: ideaId} ).then(function(idea){
     $('.ideas-table #idea'+ ideaId +' .quality').empty().append(idea.quality);
 
@@ -24,7 +31,8 @@ $(document).on('click', '.upvote', function(){
 
 $(document).on('click', '.downvote', function(){
   event.preventDefault();
-  var ideaId = $(this).attr('data-id');
+  var ideaId = getIdeaId(this);
+
   $.post('/api/v1/ideas/downvote', {id: ideaId} ).then(function(idea){
     $('.ideas-table #idea'+ ideaId +' .quality').empty().append(idea.quality);
 

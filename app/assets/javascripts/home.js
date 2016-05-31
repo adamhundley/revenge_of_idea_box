@@ -31,6 +31,8 @@ $(document).ready(function(){
     addIdeaToTable(idea);
   }
 
+  var $ideasTable = $(".ideas-table")
+
   function addIdeaToTable(idea) {
 
     var ideaBody = checkIdeaBodyLength(idea.body);
@@ -44,7 +46,7 @@ $(document).ready(function(){
     html += '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Thumbs_up_font_awesome.svg/2000px-Thumbs_up_font_awesome.svg.png" class="vote upvoteImage" id="upvote'+ idea.id +'"></a></td>';
     html += '<td><a class="delete-idea" id=delete data-id='+ idea.id + '><img src="http://www.meetchaos.com/resources/images/trash.png" class="trash"></a></td>';
     html += '</tr>';
-    $('.ideas-table').prepend(html);
+    $ideasTable.prepend(html);
 
     if (idea.quality === "swill") {
       $('#downvote'+ idea.id +'').addClass('dimVote');

@@ -11,8 +11,8 @@ $(document).ready(function(){
     var ideas = $('.idea');
 
     $.each(ideas, function(idea) {
-      title = $(this).children('.title').children('#title').val();
-      body = $(this).children('.body').children('#body').val();
+      var title = $(this).children('.title').children('#title').val();
+      var body = $(this).children('.body').children('#body').val();
 
       var matchingIdeas = findMatches(title, body, searchString);
         $(this).toggle(matchingIdeas);

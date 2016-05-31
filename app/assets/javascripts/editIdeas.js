@@ -1,25 +1,26 @@
 $(document).ready(function(){
+  var $ideasTable = $(".ideas-table")
 
-  $(".ideas-table").on("click", "td", function(){
+  $ideasTable.on("click", "td", function(){
     $(this).children('.ideaBody').show();
     $(this).children('.ideaPara').hide();
     $(this).children('input').focus();
     $(this).children('textarea').focus();
   });
 
-  $(".ideas-table").on("focus", "input, select", function(){
+  $ideasTable.on("focus", "input, select", function(){
     $(this)
     .prop("readonly", false)
     .removeClass("toedit");
   });
 
-  $('.ideas-table').on('keydown', "input, select", function (e){
+  $ideasTable.on('keydown', "input, select", function (e){
     if(e.keyCode === 13){
       textInputChanges($(this));
     }
   });
 
-  $(".ideas-table").on("blur", "input, select", function(){
+  $ideasTable.on("blur", "input, select", function(){
     textInputChanges($(this));
   });
 
@@ -43,7 +44,7 @@ $(document).ready(function(){
       });
   };
 
-  $('.ideas-table').on('keydown', "textarea", function (e){
+  $ideasTable.on('keydown', "textarea", function (e){
     if(e.keyCode === 13){
       $(this).hide();
       var ideaBody = checkIdeaBodyLength($(this).val());
@@ -51,7 +52,7 @@ $(document).ready(function(){
     }
   });
 
-  $(".ideas-table").on("blur", "textarea", function(){
+  $ideasTable.on("blur", "textarea", function(){
     $(this).hide();
     var ideaBody = checkIdeaBodyLength($(this).val());
 
